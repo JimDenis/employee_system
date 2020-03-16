@@ -72,7 +72,8 @@ function askWhatTask() {
       } else if (answers.whatTask[0] === "Update Departments") {
         UpdateDepartments();
       } else {
-        console.log("That is coming soon");
+        console.log("Out of here...");
+        connection.end();
       }
     });
 }
@@ -82,7 +83,8 @@ function selectAllEmployees() {
   connection.query("SELECT * FROM employees", function(err, results) {
     if (err) throw err;
     console.table(results);
-    connection.end();
+    askWhatTask();
+    //connection.end();
     // once you have the items, prompt the user for which they'd like to bid on
   });
 }
@@ -92,7 +94,8 @@ function selectAllRoles() {
   connection.query("SELECT * FROM roles", function(err, results) {
     if (err) throw err;
     console.table(results);
-    connection.end();
+    askWhatTask();
+    //connection.end();
     // once you have the items, prompt the user for which they'd like to bid on
   });
 }
@@ -102,7 +105,9 @@ function selectAllDepartments() {
   connection.query("SELECT * FROM departments", function(err, results) {
     if (err) throw err;
     console.table(results);
-    connection.end();
+    askWhatTask();
+
+    //connection.end();
     // once you have the items, prompt the user for which they'd like to bid on
   });
 }
@@ -125,7 +130,8 @@ function addDepartments() {
         function(err) {
           if (err) throw err;
           console.log("The department was added successfully!");
-          connection.end();
+          askWhatTask();
+          //connection.end();
           // re-prompt the user for if they want to bid or post
           //start();
           //  createEmployee(answerRole, answerVar, answers.name, answers.ID, answers.email);
@@ -168,7 +174,8 @@ function addRoles() {
         function(err) {
           if (err) throw err;
           console.log("The role was added successfully!");
-          connection.end();
+          askWhatTask();
+       //   connection.end();
       //  createEmployee(answerRole, answerVar, answers.name, answers.ID, answers.email);
     }
     );
@@ -215,7 +222,8 @@ function addEmployees() {
         function(err) {
           if (err) throw err;
           console.log("The employee was added successfully!");
-          connection.end();
+          askWhatTask();
+          //connection.end();
           // re-prompt the user for if they want to bid or post
           //start();
           //  createEmployee(answerRole, answerVar, answers.name, answers.ID, answers.email);
@@ -290,7 +298,8 @@ function finishUpdateEmployees(ID) {
         function(err) {
           if (err) throw err;
           console.log("The employee was updated successfully!");
-          connection.end();
+          askWhatTask();
+         // connection.end();
         }
       );
     });
@@ -362,7 +371,8 @@ function finishUpdateRoles(ID) {
         function(err) {
           if (err) throw err;
           console.log("The role was updated successfully!");
-          connection.end();
+          askWhatTask();
+          //connection.end();
         }
       );
     });
